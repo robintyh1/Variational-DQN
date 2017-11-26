@@ -118,7 +118,7 @@ def main():
     seed = args.seed
     os.environ['CHAINER_SEED'] = str(seed)
     np.random.seed(seed)
-    logdir = 'DQN/DQN/'+args.env+'/lr_'+str(args.lr) + 'episodes_' + str(args.episodes)
+    logdir = 'DQN/'+args.env+'/lr_'+str(args.lr) + 'episodes_' + str(args.episodes)
     if not os.path.exists(logdir):
         os.makedirs(logdir)
     

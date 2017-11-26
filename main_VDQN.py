@@ -1,5 +1,5 @@
 """
-Implement Variational DQN in Edward and TensorFlow
+Implement Variational DQN in Edward and Tensorflow
 """
 
 import tensorflow as tf
@@ -54,7 +54,7 @@ def main():
 	############
 	#### MAIN ITERATIONS
 	###########
-	logdir = args.logdir + 'copy_DQN/' + envname  + '/lr_' + str(args.lr) + '_episodes' + str(args.episodes) 
+	logdir = args.logdir + 'VDQN/' + envname  + '/lr_' + str(args.lr) + '_episodes' + str(args.episodes) 
 	
 	if not os.path.exists(logdir):
 		os.makedirs(logdir)

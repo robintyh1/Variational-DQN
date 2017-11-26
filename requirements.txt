@@ -66,3 +66,8 @@ wcwidth==0.1.7            # via prompt-toolkit
 werkzeug==0.12.2          # via tensorflow-tensorboard
 wheel==0.30.0             # via tensorflow, tensorflow-tensorboard
 widgetsnbextension==3.0.2  # via ipywidgets
+
+chainer=3.0.0
+gym=0.9.2
+
+
