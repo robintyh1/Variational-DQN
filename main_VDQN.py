@@ -18,7 +18,7 @@ import HardMDP
 
 def main():
 
-	parser = argparse.ArgumentParser(description='Chainer example: DQN')
+	parser = argparse.ArgumentParser(description='VDQN')
 	parser.add_argument('--seed',type=int,default=100)
 	parser.add_argument('--env', type=str, default='CartPole-v0',
                         help='Name of the OpenAI Gym environment')
