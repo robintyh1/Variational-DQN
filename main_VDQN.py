@@ -1,3 +1,7 @@
+"""
+Implement Variational DQN in Edward and TensorFlow
+"""
+
 import tensorflow as tf
 import edward as ed
 from edward.models import Normal
@@ -7,7 +11,7 @@ import copy
 import os
 import argparse
 
-from models_MAPtrainSigma import VariationalQNetwork,update_target,NoiseSampler
+from models_VDQN import VariationalQNetwork,update_target,NoiseSampler
 from utils import ReplayBuffer
 
 import HardMDP
