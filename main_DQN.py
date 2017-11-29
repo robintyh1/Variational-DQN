@@ -1,6 +1,6 @@
 """
 Implement vanilla DQN in Chainer
-code adapted from Chainer tutorial  
+code adapted from Chainer tutorial
 """
 
 from __future__ import print_function
@@ -19,7 +19,8 @@ from chainer import functions as F
 from chainer import links as L
 from chainer import optimizers
 
-import HardMDP
+# import HardMDP
+
 
 class QFunction(chainer.Chain):
     """Q-function represented by a MLP."""
@@ -73,14 +74,13 @@ def update(Q, target_Q, opt, samples, gamma=0.99, target_type='double_dqn'):
     loss = mean_clipped_loss(y, target)
     Q.cleargrads()
     loss.backward()
-    #print('bellman loss',loss.data)
     opt.update()
 
 
 def main():
 
     parser = argparse.ArgumentParser(description='Chainer example: DQN')
-    parser.add_argument('--seed',type=int,default=100)
+    parser.add_argument('--seed', type=int, default=100)
     parser.add_argument('--env', type=str, default='CartPole-v0',
                         help='Name of the OpenAI Gym environment')
     parser.add_argument('--batch-size', '-b', type=int, default=64,
@@ -110,26 +110,26 @@ def main():
     parser.add_argument('--record', action='store_true', default=True,
                         help='Record performance')
     parser.add_argument('--no-record', action='store_false', dest='record')
-    parser.add_argument('--lr',type=float,default=1e-2)
-    parser.add_argument('--gamma',type=float,default=.99)
+    parser.add_argument('--lr', type=float, default=1e-2)
+    parser.add_argument('--gamma', type=float, default=.99)
     args = parser.parse_args()
 
     # Initialize with seed
     seed = args.seed
     os.environ['CHAINER_SEED'] = str(seed)
     np.random.seed(seed)
-    logdir = 'DQN/'+args.env+'/lr_'+str(args.lr) + 'episodes_' + str(args.episodes)
+    logdir = 'DQN/' + args.env + '/lr_' + str(args.lr) + 'episodes'
+    '_' + str(args.episodes)
     if not os.path.exists(logdir):
         os.makedirs(logdir)
-    
+
     # Initialize an environment
     env = gym.make(args.env)
     assert isinstance(env.observation_space, gym.spaces.Box)
     assert isinstance(env.action_space, gym.spaces.Discrete)
     obs_size = env.observation_space.low.size
     n_actions = env.action_space.n
-    #if args.record:
-    #    env = gym.wrappers.Monitor(env, args.out, force=True)
+
     reward_threshold = env.spec.reward_threshold
     if reward_threshold is not None:
         print('{} defines "solving" as getting average reward of {} over 100 '
@@ -189,7 +189,8 @@ def main():
             if len(D) >= args.replay_start_size:
                 sample_indices = random.sample(range(len(D)), args.batch_size)
                 samples = [D[i] for i in sample_indices]
-                update(Q, target_Q, opt, samples, gamma = args.gamma, target_type=args.target_type)
+                update(Q, target_Q, opt, samples,
+                       gamma=args.gamma, target_type=args.target_type)
 
             # Update the target network
             if iteration % args.target_update_freq == 0:
@@ -204,13 +205,7 @@ def main():
               episode, iteration, R, average_R))
 
         rrecord.append(R)
-        np.save(logdir+'/rrecord_'+str(seed),rrecord)
-
-        #if reward_threshold is not None and average_R >= reward_threshold:
-        #    print('Solved {} by getting average reward of '
-        #          '{} >= {} over 100 consecutive episodes.'.format(
-        #              args.env, average_R, reward_threshold))
-        #    break
+        np.save(logdir + '/rrecord_' + str(seed), rrecord)
 
 
 if __name__ == '__main__':
