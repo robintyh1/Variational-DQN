@@ -3,6 +3,13 @@ The implementation of Variational DQN based on Chainer, Tensorflow and Edward. P
 
 Variational DQN leverages variational inference subroutines to update DQN parameters.
 
+### Use the code
+To run Variational DQN or DQN on Cartpole for 200 episodes
+```
+python main_VDQN.py --env CartPole-v1 --episodes 200
+python main_DQN.py --env CartPole-v1 --episodes 200
+```
+
 ### References
 
 [Tang et al., *Variational Deep Q Network*. Bayesian Deep Learning Workshop, NIPS, 2017.][vdqn]
