@@ -13,9 +13,9 @@ python main_DQN.py --env CartPole-v1 --episodes 200
 ### Citations
 If you use the code from this repo for academic research, you are very encouraged to cite the following papers.
 
-[Tang et al., *Variational Deep Q Network*. Bayesian Deep Learning Workshop, NIPS, 2017.][vdqn]
+[Tang and Kucukelbir., *Variational Deep Q Network*. Bayesian Deep Learning Workshop, NIPS, 2017.][vdqn]
 
-[Tang et al., *Exploration by Distributional Reinforcement Learning*.
+[Tang and Agrawal., *Exploration by Distributional Reinforcement Learning*.
 International Joint Conference on Artificial Intelligence (IJCAI), 2018.][exp]
 
 [vdqn]: https://arxiv.org/abs/1711.11225
